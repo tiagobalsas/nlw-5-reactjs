@@ -12,7 +12,7 @@ export function Player() {
         <strong>Selecione um podcast para ouvir</strong>
       </div>
 
-      <footer>
+      <footer className={styles.empty}>
         <div className={styles.progress}>
           <span>00:00</span>
           <div className={styles.emptySlider} />
