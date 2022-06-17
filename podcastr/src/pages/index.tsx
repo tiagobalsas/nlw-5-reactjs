@@ -3,6 +3,7 @@ import { api } from '../services/api';
 import { format, parseISO } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { convertDurationToTimeString } from '../utils/convertDurationToTimeString';
+import Image from 'next/image';
 
 import styles from './home.module.scss';
 
@@ -31,9 +32,32 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
 
         <ul>
           {latestEpisodes.map((episode) => {
+            console.log(episode.thumbnail);
+
             return (
               <li key={episode.id}>
-                <a href=''>{episode.title}</a>
+                <Image
+                  width={192}
+                  height={192}
+                  src={episode.thumbnail}
+                  alt={episode.title}
+                  objectFit='cover'
+                />
+                <div className={styles.episodeDetails}>
+                  <a href=''>{episode.title}</a>
+                  <p>{episode.members}</p>
+                  <span>{episode.publishedAt}</span>
+                  <span>{episode.durationAsString}</span>
+                </div>
+                <button type='button'>
+                  <Image
+                    width={40}
+                    height={40}
+                    src='/play-green.svg'
+                    alt='Tocar episódio'
+                    objectFit='cover'
+                  />
+                </button>
               </li>
             );
           })}
