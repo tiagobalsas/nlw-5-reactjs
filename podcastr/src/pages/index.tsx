@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { GetStaticProps } from 'next';
 import { api } from '../services/api';
 import { format, parseISO } from 'date-fns';
@@ -50,13 +51,7 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
                   <span>{episode.durationAsString}</span>
                 </div>
                 <button type='button'>
-                  <Image
-                    width={40}
-                    height={40}
-                    src='/play-green.svg'
-                    alt='Tocar episódio'
-                    objectFit='cover'
-                  />
+                  <img src='/play-green.svg' alt='Tocar episódio' />
                 </button>
               </li>
             );
