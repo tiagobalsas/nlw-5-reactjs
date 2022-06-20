@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { format, parseISO } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { GetStaticProps, GetStaticPaths } from 'next';
@@ -30,9 +31,11 @@ export default function Episode({ episode }: EpisodeProps) {
   return (
     <div className={styles.episode}>
       <div className={styles.thumbnailContainer}>
-        <button type='button'>
-          <img src='/arrow-left.svg' alt='Voltar' />
-        </button>
+        <Link href='/'>
+          <button type='button'>
+            <img src='/arrow-left.svg' alt='Voltar' />
+          </button>
+        </Link>
 
         <Image
           width={700}
