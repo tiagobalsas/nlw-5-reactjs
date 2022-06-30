@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
-import { useContext, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import Image from 'next/image';
 
-import { PlayerContext } from '../../contexts/PlayerContext';
+import { usePlayer } from '../../contexts/PlayerContext';
 
 import styles from './styles.module.scss';
 
@@ -18,7 +18,9 @@ export function Player() {
     setPlayingState,
     playNext,
     playPrevious,
-  } = useContext(PlayerContext);
+    hasNext,
+    hasPrevious,
+  } = usePlayer();
 
   useEffect(() => {
     if (!audioRef.current) {
@@ -91,7 +93,11 @@ export function Player() {
             <img src='/shuffle.svg' alt='Embaralhar' />
           </button>
 
-          <button type='button' disabled={!episode} onClick={playPrevious}>
+          <button
+            type='button'
+            disabled={!episode || !hasPrevious}
+            onClick={playPrevious}
+          >
             <img src='/play-previous.svg' alt='Tocar anterior' />
           </button>
 
@@ -108,7 +114,11 @@ export function Player() {
             )}
           </button>
 
-          <button type='button' disabled={!episode} onClick={playNext}>
+          <button
+            type='button'
+            disabled={!episode || !hasNext}
+            onClick={playNext}
+          >
             <img src='/play-next.svg' alt='Tocar próxima' />
           </button>
 
