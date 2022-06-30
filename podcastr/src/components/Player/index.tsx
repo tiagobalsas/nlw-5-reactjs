@@ -61,7 +61,7 @@ export function Player() {
           </button>
 
           <button type='button' disabled={!episode}>
-            <img src='/play-previus.svg' alt='Tocar anterior' />
+            <img src='/play-previous.svg' alt='Tocar anterior' />
           </button>
 
           <button
