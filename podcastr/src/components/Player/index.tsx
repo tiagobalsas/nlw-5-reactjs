@@ -21,6 +21,7 @@ export function Player() {
     playPrevious,
     hasNext,
     hasPrevious,
+    toggleLoop,
   } = usePlayer();
 
   useEffect(() => {
@@ -124,7 +125,12 @@ export function Player() {
             <img src='/play-next.svg' alt='Tocar próxima' />
           </button>
 
-          <button type='button' disabled={!episode}>
+          <button
+            className={isLooping ? styles.isActive : ''}
+            type='button'
+            disabled={!episode}
+            onClick={toggleLoop}
+          >
             <img src='/repeat.svg' alt='Repetir' />
           </button>
         </div>
